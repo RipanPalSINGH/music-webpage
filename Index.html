@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Favorite Song</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      overflow-x: hidden;
+      background-color: black;
+      color: white;
+    }
+
+    /* Background image and blur effect */
+    .background {
+      background-image: url('https://images.unsplash.com/photo-1611312444987-57c513645f7b?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -2;
+    }
+
+    /* Dark overlay on top of blur */
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+      color: white;
+    }
+
+    .video-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    iframe {
+      max-width: 90%;
+      border: none;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      position: relative;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="overlay"></div>
+
+  <h1>My Favorite Song</h1>
+
+  <div class="video-container">
+    <iframe width="560" height="315"
+      src="https://www.youtube.com/embed/-Z_1nLF_PeI"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div id="box"></div>
+
+  <script>
+    let box = document.getElementById("box");
+    let pos = 0;
+    let direction = 2;
+
+    function animateBox() {
+      pos += direction;
+      box.style.left = pos + "px";
+
+      if (pos > 300 || pos < 0) {
+        direction *= -1;
+      }
+
+      requestAnimationFrame(animateBox);
+    }
+
+    animateBox();
+  </script>
+</body>
+</html>
+ 
